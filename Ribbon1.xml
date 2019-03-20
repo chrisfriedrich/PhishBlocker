@@ -13,7 +13,7 @@
         </group>
         <group id="SendGroup" label="Report Attempt">
           <button id="sendButton" label="Forward Phishing Attempt"
-                  screentip="Forwards phishing attempt" 
+                  screentip="Forwards phishing attempt"
                   onAction="OnSendButton" getImage="GetSendImage" size="large" supertip="Sends phishing attempt to Central IS and adds email to threat database"/>
         </group>
       </tab>

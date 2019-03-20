@@ -13,25 +13,6 @@ using System.Text;
 using System.Windows.Forms;
 using Office = Microsoft.Office.Core;
 
-// TODO:  Follow these steps to enable the Ribbon (XML) item:
-
-// 1: Copy the following code block into the ThisAddin, ThisWorkbook, or ThisDocument class.
-
-//  protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
-//  {
-//      return new Ribbon1();
-//  }
-
-// 2. Create callback methods in the "Ribbon Callbacks" region of this class to handle user
-//    actions, such as clicking a button. Note: if you have exported this Ribbon from the Ribbon designer,
-//    move your code from the event handlers to the callback methods and modify the code to work with the
-//    Ribbon extensibility (RibbonX) programming model.
-
-// 3. Assign attributes to the control tags in the Ribbon XML file to identify the appropriate callback methods in your code.  
-
-// For more information, see the Ribbon XML documentation in the Visual Studio Tools for Office Help.
-
-
 namespace PhishTest
 {
 
@@ -39,6 +20,7 @@ namespace PhishTest
     public class MyRibbon : Office.IRibbonExtensibility
     {
         public static string HOST = "http://scopt97.pythonanywhere.com/api/";
+
         // This would in the future targ
         public static string PHISHING_EMAIL = "cnf@uoregon.edu";
 
@@ -64,6 +46,7 @@ namespace PhishTest
             return Properties.Resources.safe_email;
         }
 
+        // Event Handler for Add Button
         public void OnAddButton(Office.IRibbonControl control)
         {
             Explorer explorer = Globals.ThisAddIn.Application.ActiveExplorer();
@@ -84,7 +67,7 @@ namespace PhishTest
 
                 if (mailItem.SenderEmailType == "EX")
                 {
-                    // Exchange email address
+                    // Exchange email address - ignore
 
                     string[] directoryParts = mailItem.SenderEmailAddress.Split('=');
                     if (directoryParts.Length > 1)
@@ -95,7 +78,6 @@ namespace PhishTest
                 else
                 {
                     senderEmail = mailItem.SenderEmailAddress;
-
 
                     int successCode = AddPhishingEmail(senderEmail);
 
@@ -111,6 +93,7 @@ namespace PhishTest
         }
 
 
+        // Event Handler for Remove Button
         public void OnRemoveButton(Office.IRibbonControl control)
         {
             Explorer explorer = Globals.ThisAddIn.Application.ActiveExplorer();
@@ -131,7 +114,7 @@ namespace PhishTest
 
                 if (mailItem.SenderEmailType == "EX")
                 {
-                    // Exchange email address
+                    // Exchange email address - ignore
 
                     string[] directoryParts = mailItem.SenderEmailAddress.Split('=');
                     if (directoryParts.Length > 1)
@@ -142,7 +125,6 @@ namespace PhishTest
                 else
                 {
                     senderEmail = mailItem.SenderEmailAddress;
-
 
                     int successCode = DeletePhishingEmail(senderEmail);
 
@@ -160,6 +142,7 @@ namespace PhishTest
             }
         }
 
+        // Event Handler for Send Button
         public void OnSendButton(Office.IRibbonControl control)
         {
             Explorer explorer = Globals.ThisAddIn.Application.ActiveExplorer();
@@ -215,7 +198,7 @@ namespace PhishTest
                     senderEmail = mailItem.SenderEmailAddress;
 
 
-                    int successCode = SubmitPhishingEmail(senderEmail);
+                    int successCode = AddPhishingEmail(senderEmail);
                     
                     if(successCode > 0)
                     {
@@ -243,68 +226,6 @@ namespace PhishTest
             }
         }
 
-        protected int CheckEmailAddress(string email)
-        {
-            int status = -1;
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(HOST + "add-phish?email=" + email);
-            request.AllowAutoRedirect = true;
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-            string rawStatusCode = response.StatusCode.ToString();
-
-            if (rawStatusCode == "OK")
-            {
-                Stream receiveStream = response.GetResponseStream();
-                StreamReader reader = new StreamReader(receiveStream, Encoding.UTF8);
-
-                string results = reader.ReadToEnd();
-
-                if (results == "confirmed")
-                {
-                    status = 1;
-                }
-                else if (results == "unconfirmed")
-                {
-                    status = 0;
-                }
-                else
-                {
-                    status = -1;
-                }
-            }
-            return status;
-        }
-
-
-        protected int SubmitPhishingEmail(string email)
-        {
-            int status;
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(HOST + "add-phish?email=" + email);
-            request.AllowAutoRedirect = true;
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-            string rawStatusCode = response.StatusCode.ToString();
-
-            if(rawStatusCode == "OK")
-            {
-                status = 1;
-            }
-            else
-            {
-                status = -1;
-            }
-
-            Stream receiveStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(receiveStream, Encoding.UTF8);
-
-            string results = reader.ReadToEnd();
-
-            return status;
-        }
 
         protected int AddPhishingEmail(string email)
         {
