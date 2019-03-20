@@ -1,5 +1,3 @@
-# PhishBlocker
-
 # Summary
 An Outlook plugin (Windows) which allows for the designation of suspected threats as such, and the forwarding of threats to a central email service.  Connects to a central database which stores entries through a webservice connection.
 
