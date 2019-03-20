@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
+  <ribbon>
+    <tabs>
+      <tab idMso="TabAddIns">
+        <group id="ThreatGroup" label="Mark Threats">
+          <button id="addButton" label="Add Threat"
+               screentip="Add Threat to Database" onAction="OnAddButton" getImage="GetAddImage" size="large"
+               supertip="Adds threat to the central database and alerts other users"/>
+          <button id="removeButton" label="Remove Threat"
+               screentip="Remove Threat from Database" onAction="OnRemoveButton" getImage="GetRemoveImage" size="large"
+               supertip="Removes threat from central database and updates emails accordingly"/>
+        </group>
+        <group id="SendGroup" label="Report Attempt">
+          <button id="sendButton" label="Forward Phishing Attempt"
+                  screentip="Forwards phishing attempt" 
+                  onAction="OnSendButton" getImage="GetSendImage" size="large" supertip="Sends phishing attempt to Central IS and adds email to threat database"/>
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>
+

@@ -1,0 +1,14 @@
+C:\Users\cnf\source\repos\PhishTest\PhishTest\bin\Debug\PhishTest.dll
+C:\Users\cnf\source\repos\PhishTest\PhishTest\bin\Debug\PhishTest.pdb
+C:\Users\cnf\source\repos\PhishTest\PhishTest\bin\Debug\PhishTest.dll.manifest
+C:\Users\cnf\source\repos\PhishTest\PhishTest\bin\Debug\PhishTest.vsto
+C:\Users\cnf\source\repos\PhishTest\PhishTest\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+C:\Users\cnf\source\repos\PhishTest\PhishTest\bin\Debug\Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll
+C:\Users\cnf\source\repos\PhishTest\PhishTest\obj\Debug\PhishTest.Properties.Resources.resources
+C:\Users\cnf\source\repos\PhishTest\PhishTest\obj\Debug\PhishBlocker.csproj.GenerateResource.cache
+C:\Users\cnf\source\repos\PhishTest\PhishTest\obj\Debug\PhishBlocker.csproj.CoreCompileInputs.cache
+C:\Users\cnf\source\repos\PhishTest\PhishTest\obj\Debug\PhishBlocker.csproj.CopyComplete
+C:\Users\cnf\source\repos\PhishTest\PhishTest\obj\Debug\PhishTest.dll
+C:\Users\cnf\source\repos\PhishTest\PhishTest\obj\Debug\PhishTest.pdb
+C:\Users\cnf\source\repos\PhishTest\PhishTest\obj\Debug\PhishTest.FormRegion1.resources
+C:\Users\cnf\source\repos\PhishTest\PhishTest\obj\Debug\PhishBlocker.csprojAssemblyReference.cache
