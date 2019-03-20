@@ -5,6 +5,6 @@ An Outlook plugin (Windows) which allows for the designation of suspected threat
 Currently in development (alpha).  Must be run using Visual Studio and debugged in Outlook directly.
 
 # Requirements
-Windows Operating System (Windows 7-10)
+Windows Operating System (Windows 7-10)<br />
 Microsoft Office (Outlook 2013-2016/365)
 Visual Studio (2013-2017)
